@@ -1,0 +1,22 @@
+import json
+
+EXPENSES_FILE = "expense_list.json"
+
+
+def write_file(expense_list):
+    try:
+        with open(EXPENSES_FILE, "w", encoding="utf-8") as f:
+            json.dump(expense_list, f, ensure_ascii=False, indent=4)
+        return True
+    except FileNotFoundError, json.JSONDecodeError:
+        print("Could not write file")
+        return False
+
+
+def load_file():
+    try:
+        with open(EXPENSES_FILE) as f:
+            expense_list = json.load(f)
+            return expense_list
+    except OSError as e:
+        print(f"Could not retrieve file: {e}")
