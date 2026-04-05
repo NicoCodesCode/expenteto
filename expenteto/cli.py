@@ -39,10 +39,10 @@ def main():
     update_parser.add_argument(
         "--id", type=int, required=True, help="the ID of the expense"
     )
-    add_parser.add_argument(
+    update_parser.add_argument(
         "-d", "--description", help="a short description of the expense"
     )
-    add_parser.add_argument("-a", "--amount", help="the amount of the expense")
+    update_parser.add_argument("-a", "--amount", help="the amount of the expense")
 
     delete_parser = subparsers.add_parser("delete", help="delete an expense")
     delete_parser.add_argument(
