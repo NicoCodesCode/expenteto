@@ -1,7 +1,11 @@
 import argparse
+from expenteto.storage import load_file
+from expenteto.expenses import *
 
 
 def main():
+    expense_list = load_file()
+
     parser = argparse.ArgumentParser()
 
     subparsers = parser.add_subparsers(title="Actions", dest="action")
@@ -44,3 +48,8 @@ def main():
     delete_parser.add_argument(
         "--id", type=int, required=True, help="the ID of the expense"
     )
+
+    args = parser.parse_args()
+
+    if args.action == "add":
+        add_expense(args.description, args.amount, expense_list)
