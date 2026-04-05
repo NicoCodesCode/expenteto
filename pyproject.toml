@@ -7,4 +7,4 @@ name = "expenteto"
 version = "0.1.0"
 
 [project.scripts]
-spam-cli = "expenteto.cli:main"
+expenteto = "expenteto.cli:main"
