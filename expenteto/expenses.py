@@ -2,7 +2,7 @@ from expenteto.storage import write_file
 
 
 def add_expense(description, amount, expense_list):
-    if amount > 0:
+    if amount > 0 and description.strip():
         id = max((expense["id"] for expense in expense_list), default=0) + 1
         new_expense = {"id": id, "description": description, "amount": amount}
         expense_list.append(new_expense)
@@ -10,4 +10,4 @@ def add_expense(description, amount, expense_list):
         if write_file(expense_list):
             print(f"{description} was added to the list")
     else:
-        print("The amount can't be zero or negative")
+        print("Description or amount is invalid")
