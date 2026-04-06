@@ -11,3 +11,12 @@ def add_expense(description, amount, expense_list):
             print(f"{description} was added to the list")
     else:
         print("Description or amount is invalid")
+
+
+def list_expenses(expense_list):
+    if len(expense_list):
+        print(f"{'ID':<12}{'Description':<21}{'Amount':<10}")
+        for expense in expense_list:
+            print(
+                f"{expense['id']:<12}{expense['description']:<21}{expense['amount']:<10}"
+            )

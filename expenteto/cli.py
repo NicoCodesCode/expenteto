@@ -55,3 +55,5 @@ def main():
 
     if args.action == "add":
         add_expense(args.description, args.amount, expense_list)
+    elif args.action == "list":
+        list_expenses(expense_list)
