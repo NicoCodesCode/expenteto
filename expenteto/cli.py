@@ -73,5 +73,7 @@ def main():
             print("Provide at least a new description or a new amount")
         else:
             update_expense(args.id, args.description, args.amount, expense_list)
+    elif args.action == "delete":
+        delete_expense(args.id, expense_list)
     else:
         parser.print_help()

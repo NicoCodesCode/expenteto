@@ -62,3 +62,16 @@ def update_expense(expense_id, new_description, new_amount, expense_list):
 
     if write_file(expense_list):
         print("The expense was successfully updated")
+
+
+def delete_expense(expense_id, expense_list):
+    expense = find_expense_by_id(expense_id, expense_list)
+
+    if not expense:
+        print(f"There is no expense with ID {expense_id}")
+        return
+
+    expense_list.remove(expense)
+
+    if write_file(expense_list):
+        print(f"'{expense["description"]}' was deleted from the list")
