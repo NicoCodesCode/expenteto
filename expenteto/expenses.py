@@ -38,3 +38,26 @@ def filter_expenses_by_month(month, expense_list):
 def summary_expenses(expense_list):
     summary = sum(expense["amount"] for expense in expense_list)
     print(f"Total expenses: ${summary}")
+
+
+def find_expense_by_id(expense_id, expense_list):
+    return next(
+        (expense for expense in expense_list if expense["id"] == expense_id),
+        None,
+    )
+
+
+def update_expense(expense_id, new_description, new_amount, expense_list):
+    expense = find_expense_by_id(expense_id, expense_list)
+
+    if not expense:
+        print(f"There is no expense with ID {expense_id}")
+        return
+
+    if new_description:
+        expense["description"] = new_description
+    if new_amount:
+        expense["amount"] = new_amount
+
+    if write_file(expense_list):
+        print("The expense was successfully updated")

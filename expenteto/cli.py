@@ -68,5 +68,10 @@ def main():
             else:
                 handler = summary_expenses if args.summary else list_expenses
                 handler(target_list)
+    elif args.action == "update":
+        if not any((args.description, args.amount)):
+            print("Provide at least a new description or a new amount")
+        else:
+            update_expense(args.id, args.description, args.amount, expense_list)
     else:
         parser.print_help()
