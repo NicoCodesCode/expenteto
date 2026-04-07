@@ -68,3 +68,5 @@ def main():
             else:
                 handler = summary_expenses if args.summary else list_expenses
                 handler(target_list)
+    else:
+        parser.print_help()
