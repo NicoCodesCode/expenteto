@@ -7,9 +7,9 @@ def add_expense(description, amount, expense_list):
         print("Description or amount is invalid")
         return
 
-    id = max((expense["id"] for expense in expense_list), default=0) + 1
+    expense_id = max((expense["id"] for expense in expense_list), default=0) + 1
     new_expense = {
-        "id": id,
+        "id": expense_id,
         "description": description,
         "amount": amount,
         "date": date.today().isoformat(),
@@ -17,7 +17,7 @@ def add_expense(description, amount, expense_list):
     expense_list.append(new_expense)
 
     if write_file(expense_list):
-        print(f"{description} was added to the list")
+        print(f"{description} was added to the list (ID: {expense_id})")
 
 
 def list_expenses(expense_list):
