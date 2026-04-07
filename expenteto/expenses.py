@@ -26,22 +26,13 @@ def list_expenses(expense_list):
 
 
 def list_expenses_by_month(month, expense_list):
-    if month in range(1, 12):
-        current_year = date.today().year
-
-        filtered_list = [
-            expense
-            for expense in expense_list
-            if (expense_date := date.fromisoformat(expense["date"])).month == month
-            and expense_date.year == current_year
-        ]
-
-        if filtered_list:
-            list_expenses(filtered_list)
-        else:
-            print("There are no expenses for that month")
-    else:
-        print("Please provide a valid month (1-12)")
+    current_year = date.today().year
+    return [
+        expense
+        for expense in expense_list
+        if (expense_date := date.fromisoformat(expense["date"])).month == month
+        and expense_date.year == current_year
+    ]
 
 
 def summary_expenses(expense_list):

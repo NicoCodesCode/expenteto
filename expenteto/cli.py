@@ -22,7 +22,12 @@ def main():
 
     list_parser = subparsers.add_parser("list", help="list all the expenses")
     list_parser.add_argument(
-        "-m", "--month", type=int, help="list all the expenses of a certain month"
+        "-m",
+        "--month",
+        choices=range(1, 13),
+        metavar="MONTH",
+        type=int,
+        help="list all the expenses of a certain month",
     )
 
     subparsers.add_parser("summary", help="show a summary of the expenses")
