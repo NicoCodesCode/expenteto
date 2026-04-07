@@ -22,6 +22,9 @@ def main():
 
     list_parser = subparsers.add_parser("list", help="list all the expenses")
     list_parser.add_argument(
+        "-s", "--summary", action="store_true", help="show a summary of the expenses"
+    )
+    list_parser.add_argument(
         "-m",
         "--month",
         choices=range(1, 13),
@@ -29,8 +32,6 @@ def main():
         type=int,
         help="list all the expenses of a certain month",
     )
-
-    subparsers.add_parser("summary", help="show a summary of the expenses")
 
     update_parser = subparsers.add_parser("update", help="update an expense")
     update_parser.add_argument(
@@ -55,12 +56,15 @@ def main():
     elif args.action == "list":
         if not expense_list:
             print("The list is empty")
-        elif args.month:
-            list_expenses_by_month(args.month, expense_list)
         else:
-            list_expenses(expense_list)
-    elif args.action == "summary":
-        if not expense_list:
-            print("The list is empty")
-        else:
-            summary_expenses(expense_list)
+            target_list = (
+                filter_expenses_by_month(args.month, expense_list)
+                if args.month
+                else expense_list
+            )
+
+            if not target_list:
+                print("There are no expenses for that month")
+            else:
+                handler = summary_expenses if args.summary else list_expenses
+                handler(target_list)

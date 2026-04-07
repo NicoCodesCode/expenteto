@@ -25,20 +25,14 @@ def list_expenses(expense_list):
         print(f"{expense['id']:<12}{expense['description']:<21}{expense['amount']:<10}")
 
 
-def list_expenses_by_month(month, expense_list):
+def filter_expenses_by_month(month, expense_list):
     current_year = date.today().year
-
-    filtered_list = [
+    return [
         expense
         for expense in expense_list
         if (expense_date := date.fromisoformat(expense["date"])).month == month
         and expense_date.year == current_year
     ]
-
-    if filtered_list:
-        list_expenses(filtered_list)
-    else:
-        print("There are no expenses for that month")
 
 
 def summary_expenses(expense_list):
