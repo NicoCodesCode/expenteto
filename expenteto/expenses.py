@@ -3,20 +3,21 @@ from datetime import date
 
 
 def add_expense(description, amount, expense_list):
-    if amount > 0 and description.strip():
-        id = max((expense["id"] for expense in expense_list), default=0) + 1
-        new_expense = {
-            "id": id,
-            "description": description,
-            "amount": amount,
-            "date": date.today().isoformat(),
-        }
-        expense_list.append(new_expense)
-
-        if write_file(expense_list):
-            print(f"{description} was added to the list")
-    else:
+    if amount < 0 and not description.strip():
         print("Description or amount is invalid")
+        return
+
+    id = max((expense["id"] for expense in expense_list), default=0) + 1
+    new_expense = {
+        "id": id,
+        "description": description,
+        "amount": amount,
+        "date": date.today().isoformat(),
+    }
+    expense_list.append(new_expense)
+
+    if write_file(expense_list):
+        print(f"{description} was added to the list")
 
 
 def list_expenses(expense_list):
