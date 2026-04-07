@@ -25,15 +25,7 @@ def main():
         "-m", "--month", type=int, help="list all the expenses of a certain month"
     )
 
-    summary_parser = subparsers.add_parser(
-        "summary", help="show a summary of the expenses"
-    )
-    summary_parser.add_argument(
-        "-m",
-        "--month",
-        type=int,
-        help="show a summary of the expenses of a certain month (of current year)",
-    )
+    subparsers.add_parser("summary", help="show a summary of the expenses")
 
     update_parser = subparsers.add_parser("update", help="update an expense")
     update_parser.add_argument(
