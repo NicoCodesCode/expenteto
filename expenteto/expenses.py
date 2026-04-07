@@ -42,3 +42,9 @@ def list_expenses_by_month(month, expense_list):
         list_expenses(filtered_list)
     else:
         print("Please provide a valid month (1-12)")
+
+
+def summary_expenses(expense_list):
+    if len(expense_list):
+        summary = sum(expense["amount"] for expense in expense_list)
+        print(f"Total expenses: ${summary}")

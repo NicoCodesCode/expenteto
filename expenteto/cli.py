@@ -60,3 +60,5 @@ def main():
             list_expenses_by_month(args.month, expense_list)
         else:
             list_expenses(expense_list)
+    elif args.action == "summary":
+        summary_expenses(expense_list)
