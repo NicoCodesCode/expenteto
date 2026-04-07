@@ -56,9 +56,14 @@ def main():
     if args.action == "add":
         add_expense(args.description, args.amount, expense_list)
     elif args.action == "list":
-        if args.month:
+        if not expense_list:
+            print("The list is empty")
+        elif args.month:
             list_expenses_by_month(args.month, expense_list)
         else:
             list_expenses(expense_list)
     elif args.action == "summary":
-        summary_expenses(expense_list)
+        if not expense_list:
+            print("The list is empty")
+        else:
+            summary_expenses(expense_list)

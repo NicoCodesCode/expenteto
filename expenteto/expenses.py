@@ -20,12 +20,9 @@ def add_expense(description, amount, expense_list):
 
 
 def list_expenses(expense_list):
-    if len(expense_list):
-        print(f"{'ID':<12}{'Description':<21}{'Amount':<10}")
-        for expense in expense_list:
-            print(
-                f"{expense['id']:<12}{expense['description']:<21}{expense['amount']:<10}"
-            )
+    print(f"{'ID':<12}{'Description':<21}{'Amount':<10}")
+    for expense in expense_list:
+        print(f"{expense['id']:<12}{expense['description']:<21}{expense['amount']:<10}")
 
 
 def list_expenses_by_month(month, expense_list):
@@ -39,12 +36,14 @@ def list_expenses_by_month(month, expense_list):
             and expense_date.year == current_year
         ]
 
-        list_expenses(filtered_list)
+        if filtered_list:
+            list_expenses(filtered_list)
+        else:
+            print("There are no expenses for that month")
     else:
         print("Please provide a valid month (1-12)")
 
 
 def summary_expenses(expense_list):
-    if len(expense_list):
-        summary = sum(expense["amount"] for expense in expense_list)
-        print(f"Total expenses: ${summary}")
+    summary = sum(expense["amount"] for expense in expense_list)
+    print(f"Total expenses: ${summary}")
