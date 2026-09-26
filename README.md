@@ -6,10 +6,18 @@ Project made for: https://roadmap.sh/projects/expense-tracker
 
 ## Installation
 
+### For users
+
 ```bash
-git clone https://github.com/yourusername/expenteto.git
+pipx install git+https://github.com/NicoCodesCode/expenteto.git
+```
+
+### For contributors
+
+```bash
+git clone https://github.com/NicoCodesCode/expenteto.git
 cd expenteto
-pip install -e .
+pip install -e ".[test]"
 ```
 
 ## Usage
