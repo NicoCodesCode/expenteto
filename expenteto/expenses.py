@@ -57,7 +57,7 @@ def update_expense(expense_id, new_description, new_amount, expense_list):
 
     if new_description:
         expense["description"] = new_description
-    if new_amount:
+    if new_amount is not None:
         expense["amount"] = new_amount
 
     if write_file(expense_list):
