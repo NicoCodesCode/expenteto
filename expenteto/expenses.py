@@ -3,7 +3,7 @@ from datetime import date
 
 
 def add_expense(description, amount, expense_list):
-    if amount < 0 and not description.strip():
+    if amount < 0 or not description.strip():
         print("Description or amount is invalid")
         return
 
