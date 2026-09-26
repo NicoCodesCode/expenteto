@@ -74,4 +74,4 @@ def delete_expense(expense_id, expense_list):
     expense_list.remove(expense)
 
     if write_file(expense_list):
-        print(f"'{expense["description"]}' was deleted from the list")
+        print(f"'{expense['description']}' was deleted from the list")
