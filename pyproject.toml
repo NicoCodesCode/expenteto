@@ -8,3 +8,6 @@ version = "0.1.0"
 
 [project.scripts]
 expenteto = "expenteto.cli:main"
+
+[project.optional-dependencies]
+test = ["pytest"]
